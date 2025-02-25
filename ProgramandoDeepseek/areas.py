@@ -9,3 +9,6 @@ def area_rectangulo(largo, ancho):
 if __name__ == "__main__":
     print("Área del círculo (radio=5):", area_circulo(5))
     print("Área del rectángulo (largo=4, ancho=6):", area_rectangulo(4, 6))
+    
+def area_triangulo(base, altura):
+    return (base * altura) / 2
