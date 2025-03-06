@@ -1,0 +1,21 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'  # Organiza elementos verticalmente
+        TextInput:
+            id: email
+            hint_text: "Email"  # Placeholder
+        TextInput:
+            id: password
+            hint_text: "Password"
+            password: True  # Oculta el texto ingresado
+        Button:
+            text: "Login"
+            on_press: root.login()  # Llama al método login al hacer clic
+
+<MainScreen>:
+    BoxLayout:
+        FileChooserListView:
+            id: file_chooser  # Selector de archivos del sistema
+        Button:
+            text: "Subir"
+            on_press: root.upload_media()  # Inicia la subida

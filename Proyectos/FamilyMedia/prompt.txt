@@ -1,0 +1,83 @@
+Proyecto: FamilyMedia
+Objetivo: Desarrollar una aplicación móvil para Android utilizando Python, que permita a los usuarios compartir fotos y videos de alta resolución sin degradar la calidad, y con un límite de tiempo de almacenamiento.
+
+Sistema Operativo
+El entorno de desarrollo estará completamente configurado para Windows, garantizando que todas las herramientas, configuraciones y pasos sean compatibles con este sistema operativo.
+
+Enfoque de Aprendizaje
+Secuencial y Paso a Paso: Cada funcionalidad será implementada y entendida antes de avanzar a la siguiente.
+
+Documentación Detallada: Cada línea de código estará documentada explicando qué hace y su propósito.
+
+División en Partes: El código se construirá por partes, entendiendo cada archivo y funcionalidad antes de avanzar.
+
+Funcionalidades de la Aplicación
+Autenticación
+
+Crear cuentas e iniciar sesión.
+
+Implementar OAuth2 para autenticación segura.
+
+Carga de Archivos
+
+Subir fotos y videos desde la galería manteniendo la calidad original.
+
+Utilizar Cloudinary para el almacenamiento de archivos.
+
+Visualización y Descarga
+
+Generar miniaturas para videos subidos.
+
+Permitir la descarga de archivos en resolución original.
+
+Eliminación Automática
+
+Implementar un sistema que elimine los archivos de Cloudinary después de 24 horas.
+
+Control de Permisos
+
+Garantizar que solo usuarios autenticados puedan acceder a los archivos.
+
+Optimización de la Aplicación
+
+Mejorar el rendimiento para manejar archivos de gran tamaño de manera eficiente.
+
+Tecnologías Utilizadas
+Frontend: Kivy para la interfaz de usuario.
+
+Backend: Flask para gestionar solicitudes y lógica del servidor.
+
+Almacenamiento: Cloudinary para manejar archivos multimedia.
+
+Base de Datos y Hosting: Render para datos de usuarios y despliegue del backend.
+
+Implementación Paso a Paso
+Configuración del Entorno de Desarrollo
+
+Instalación de Python, Kivy, Flask y dependencias necesarias.
+
+Detalle de cada herramienta, cómo instalarla y su propósito en el proyecto.
+
+Estructura del Proyecto
+
+Crear directorios y archivos iniciales.
+
+Explicar la funcionalidad de cada carpeta y archivo.
+
+Desarrollo Secuencial
+
+Implementar y documentar cada funcionalidad (autenticación, carga de archivos, etc.) línea por línea.
+
+Dividir cada archivo en partes comprensibles.
+
+Pruebas y Depuración
+
+Probar cada funcionalidad después de implementarla.
+
+Resolver errores comunes y documentar soluciones.
+
+Optimización y Despliegue
+
+Asegurar que la aplicación sea eficiente en el manejo de archivos grandes.
+
+Desplegar el backend en Render y preparar la aplicación para producción.

@@ -154,12 +154,34 @@ class Libro:
         if conn:
             try:
                 cursor = conn.cursor()
-                cursor.execute("SELECT id, titulo, autor, año_publicacion FROM Libros WHERE id = ?", (libro_id,))
+                # Incluir el campo 'eliminado' en la consulta
+                cursor.execute("""
+                    SELECT id, titulo, autor, año_publicacion, eliminado 
+                    FROM Libros 
+                    WHERE id = ?
+                """, (libro_id,))
+                
                 resultado = cursor.fetchone()
+                
                 if resultado:
-                    return cls(resultado[1], resultado[2], resultado[3], resultado[0])
+                    eliminado = resultado[4]  # Índice 4 corresponde a 'eliminado'
+                    
+                    if eliminado == 1:
+                        return "eliminado"
+                    else:
+                        # Retorna el objeto solo si no está eliminado
+                        return cls(
+                            titulo=resultado[1],
+                            autor=resultado[2],
+                            año_publicacion=resultado[3],
+                            id=resultado[0]
+                        )
+                else:
+                    return None  # Libro no encontrado
+                
             except Exception as e:
                 print(f"Error al buscar el libro por ID: {e}")
+                return None
             finally:
                 conn.close()
         return None
@@ -523,24 +545,24 @@ def menu():
                 print("Formato incorrecto. Usa 'Título, Autor, Año'.")
                 
         elif opcion == "2":
-            libro_id = int(input("Introduce el ID del libro a modificar: "))
-            nuevo_titulo = input("Nuevo título (deja en blanco para no cambiar): ")
-            nuevo_autor = input("Nuevo autor (deja en blanco para no cambiar): ")
-            nuevo_año = input("Nuevo año de publicación (deja en blanco para no cambiar): ")
-            nuevo_año = int(nuevo_año) if nuevo_año else None
+            libro_id = int(input("Introduce el ID del libro a modificar: "))            
             libro = Libro.buscar_por_id(libro_id)  # Método para buscar libro por ID
-            if libro:
-                print(libro.modificar(nuevo_titulo, nuevo_autor, nuevo_año))
-            else:
+            if libro == "eliminado":
                 print("Libro no encontrado.")
+            else:
+                nuevo_titulo = input("Nuevo título (deja en blanco para no cambiar): ")
+                nuevo_autor = input("Nuevo autor (deja en blanco para no cambiar): ")
+                nuevo_año = input("Nuevo año de publicación (deja en blanco para no cambiar): ")
+                nuevo_año = int(nuevo_año) if nuevo_año else None
+                print(libro.modificar(nuevo_titulo, nuevo_autor, nuevo_año))
 
         elif opcion == "3":
             libro_id = int(input("Introduce el ID del libro a eliminar lógicamente: "))
             libro = Libro.buscar_por_id(libro_id)  # Método para buscar libro por ID
-            if libro:
-                print(libro.eliminar_libro())  # Método para eliminar libro lógicamente
-            else:
+            if libro == "eliminado":
                 print("Libro no encontrado.")
+            else:
+                print(libro.eliminar_libro())  # Método para eliminar libro lógicamente
 
         elif opcion == "4":
             libro_id = int(input("Introduce el ID del libro para ver su historial de cambios: "))
@@ -587,7 +609,7 @@ def menu():
 
         elif opcion == "10":
             usuario_id = input("Introduce el ID del usuario: ")
-            titulo_libro = input("Introduce el título del libro a prestar: ")
+            titulo_libro = input("Introduce el título del libro a prestar: ")            
             print(biblioteca.prestar_libro(usuario_id, titulo_libro))
 
         elif opcion == "11":
