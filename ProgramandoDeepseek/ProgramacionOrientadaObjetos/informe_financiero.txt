@@ -1,0 +1,8 @@
+Informe Financiero
+Fecha: 2025-04-20 21:22:20
+
+Promedio de ventas: $790.40
+Ventas por categoría:
+- Tecnología: $2200.50
+- Hogar: $1301.00
+- Ropa: $450.50

@@ -1,0 +1,49 @@
+BoxLayout:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 10
+
+    Image:
+        source: 'logo.png'  # Reemplaza con el nombre de tu archivo de imagen
+        size_hint: None, None # Desactiva el redimensionamiento automático
+        width: 300 # Define el ancho de la imagen
+        height: 300 # Define el alto de la imagen
+        pos_hint: {'center_x': 0.5, 'center_y': 0.9} # centra la imagen horizontal y verticalmente
+
+    TextInput:
+        id: activaciones_input
+        hint_text: 'Numero de activaciones'
+        size_hint_y: None
+        size_hint_x: 0.8
+        height: 40
+        multiline: False
+        input_type: 'number'
+        background_color: 0.9, 0.9, 0.9, 1
+        foreground_color: 0, 0, 0, 1
+        padding: [10, (self.height - self.line_height) / 2]
+        font_size: 16
+        pos_hint: {'center_x': 0.5} # centra el input text horizontalmente
+
+    Button:
+        text: 'Calcular'
+        size_hint_y: None
+        height: 40
+        background_color: 0.2, 0.6, 1, 1
+        foreground_color: 1, 1, 1, 1
+        font_size: 16
+        size_hint_x: 0.8
+        pos_hint: {'center_x': 0.5} # centra el boton horizontalmente
+        on_press: app.calcular()
+    Label:
+        id: resultado_label
+        text: ''
+        size_hint_y: None
+        height: 200
+        text_size: self.width, None
+        valign: 'middle'
+        padding: [10, 10]
+        background_color: 0.95, 0.95, 0.95, 1
+        foreground_color: 0, 0, 0, 1
+        font_size: 14
+        size_hint_x: 0.5
+        pos_hint: {'center_x': 0.5} # centra el boton horizontalmente

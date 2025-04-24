@@ -20,7 +20,7 @@ while True:  # Bucle infinito
         "Escribe: 1, 2, 3 o 4. "
     )
 
-    # Salir del programa si el usuario elige la opción 3
+    # Salir del programa si el usuario elige la opción 4
     if opcion == "4":
         print("¡Gracias por usar el programa! ¡Hasta luego!")
         break  # Sale del bucle while
